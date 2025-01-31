@@ -14,12 +14,12 @@ export default function CaptionGenerator() {
 
   // โหลดหัวข้อแบบสุ่มและภาษา
   useEffect(() => {
-    fetch('https://backend-tmb5.onrender.com')
+    fetch('https://gencaptionapi.glitch.me/')
       .then(response => response.json())
       .then(data => setRandomTopics(data.topics))
       .catch(error => console.error("เกิดข้อผิดพลาดในการโหลดหัวข้อ:", error));
 
-    fetch('https://backend-tmb5.onrender.com')
+    fetch('https://gencaptionapi.glitch.me/')
       .then(response => response.json())
       .then(data => setLanguages(data.languages))
       .catch(error => console.error("เกิดข้อผิดพลาดในการโหลดภาษา:", error));
@@ -31,7 +31,7 @@ export default function CaptionGenerator() {
     setCaption('');
 
     try {
-      const response = await fetch('https://backend-tmb5.onrender.com', {
+      const response = await fetch('https://gencaptionapi.glitch.me/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: input, language }),
